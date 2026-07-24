@@ -1,13 +1,13 @@
 import { Pool } from "pg";
-import Config from "../config.js";
+import { config } from "../config/index.js";
 import logger from "../utils/logger.js";
 
 export const db = new Pool({
-  host: Config.DB_HOST,
-  port: Config.DB_PORT,
-  user: Config.DB_USER,
-  password: Config.DB_PASSWORD,
-  database: Config.DB_NAME,
+  host: config.DB_HOST,
+  port: config.DB_PORT,
+  user: config.DB_USER,
+  password: config.DB_PASSWORD,
+  database: config.DB_NAME,
   max: 10,
 });
 

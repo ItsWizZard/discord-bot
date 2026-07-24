@@ -1,5 +1,5 @@
 import { ActivityType } from "discord.js";
-import { deployCommands } from "../handlers/deployCommands.js";
+import { deployCommands } from "../loaders/index.js";
 import type { BotEvent } from "../types/BotEvent.js";
 import logger from "../utils/logger.js";
 
