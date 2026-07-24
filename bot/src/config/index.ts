@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+
 dotenv.config();
 
 const envVars = {
@@ -22,7 +23,7 @@ if (missingVars.length > 0) {
   throw new Error(`Missing environment variables: ${missingVars.join(", ")}`);
 }
 
-interface Env {
+export interface Config {
   NODE_ENV: string;
   CLIENT_ID: string;
   GUILD_ID: string;
@@ -35,7 +36,7 @@ interface Env {
   DB_NAME: string;
 }
 
-const Config: Env = {
+export const config: Config = {
   NODE_ENV: envVars.NODE_ENV,
   CLIENT_ID: envVars.CLIENT_ID!,
   GUILD_ID: envVars.GUILD_ID!,
@@ -47,5 +48,3 @@ const Config: Env = {
   DB_PORT: envVars.DB_PORT!,
   DB_NAME: envVars.DB_NAME!,
 };
-
-export default Config;

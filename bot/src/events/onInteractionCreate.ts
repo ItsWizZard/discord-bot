@@ -1,5 +1,5 @@
 import { MessageFlags } from "discord.js";
-import { commands } from "../handlers/commandRegistry.js";
+import { commands } from "../loaders/index.js";
 import type { BotEvent } from "../types/BotEvent.js";
 import logger from "../utils/logger.js";
 
