@@ -1,4 +1,4 @@
-import type { Client, ClientEvents } from 'discord.js';
+import type { Client, ClientEvents } from "discord.js";
 
 export type BotEventName = keyof ClientEvents;
 

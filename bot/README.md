@@ -1,39 +1,42 @@
 # Instalation
 
-## Requirements 
-* [Node.js >= v22.21](https://nodejs.org/en/download)
-* [Bun.js >= v1.3.3](https://bun.com/docs/installation)
-* PM2
+## Requirements
+
+- [PostgreSQL](https://www.postgresql.org/download/)
+- [Node.js >= v22.21](https://nodejs.org/en/download)
+- PNPM >= v11.0.0
+- PM2
 
 ---
 
-Install PM2
-```bash
-npm install -g pm2
-```
-
 Install dependencies
+
 ```bash
 cd bot
-bun install
+pnpm install
 ```
 
 ---
 
 ## How to run
+
 ### Development:
+
 ```bash
-bun run dev
+pnpm run dev
 ```
 
 ### Production:
+
 Standalone:
+
 ```bash
-bun run build
-bun run start
+pnpm run build
+pnpm run start
 ```
 
 With PM2
+
 ```bash
-bun run start:prod
+pnpm run start:prod
 ```

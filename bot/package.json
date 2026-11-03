@@ -2,28 +2,33 @@
   "name": "discord-bot",
   "version": "0.1.2",
   "description": "A Discord Bot",
+  "type": "module",
   "scripts": {
-    "build": "bun run tsc",
-    "start": "bun run dist/index.js",
+    "build": "pnpm run typecheck && npx tsc",
+    "start": "node dist/index.js",
     "start:pm2": "pm2 start ecosystem.config.js --env production",
-    "start:prod": "bun run build && bun run start:pm2",
-    "dev": "bun run nodemon -L",
-    "format": "prettier --write src"
-  },
-  "devDependencies": {
-    "@types/node": "^24.10.1",
-    "@types/node-fetch": "^2.6.13",
-    "nodemon": "^3.1.11",
-    "prettier": "^3.6.2",
-    "prettier-plugin-organize-imports": "^4.3.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "start:prod": "pnpm run build && pnpm run start:pm2",
+    "dev": "tsx watch src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "fmt": "oxfmt src",
+    "fmt:check": "oxfmt src --check",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "check": "pnpm run fmt:check && pnpm run lint && pnpm run typecheck"
   },
   "dependencies": {
-    "discord.js": "^14.24.2",
-    "dotenv": "^17.2.3",
-    "mysql2": "^3.15.3",
-    "pino": "^10.1.0",
+    "discord.js": "^14.27.0",
+    "dotenv": "^17.4.2",
+    "pg": "^8.22.0",
+    "pino": "^10.3.1",
     "pino-pretty": "^13.1.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/pg": "^8.20.0",
+    "oxfmt": "^0.60.0",
+    "oxlint": "^1.75.0",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2"
   }
 }

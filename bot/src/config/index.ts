@@ -1,16 +1,17 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
+
 dotenv.config();
 
 const envVars = {
-  NODE_ENV: process.env.NODE_ENV || 'development',
+  NODE_ENV: process.env.NODE_ENV || "development",
   CLIENT_ID: process.env.CLIENT_ID,
   GUILD_ID: process.env.GUILD_ID,
   DISCORD_TOKEN: process.env.DISCORD_TOKEN,
   ACTION_LOG_CHANNEL: process.env.ACTION_LOG_CHANNEL,
   DB_USER: process.env.DB_USER,
   DB_PASSWORD: process.env.DB_PASSWORD,
-  DB_HOST: process.env.DB_HOST ?? 'localhost',
-  DB_PORT: Number(process.env.DB_PORT ?? 3306),
+  DB_HOST: process.env.DB_HOST ?? "localhost",
+  DB_PORT: Number(process.env.DB_PORT ?? 5432),
   DB_NAME: process.env.DB_NAME,
 };
 
@@ -19,10 +20,10 @@ const missingVars = Object.entries(envVars)
   .map(([key]) => key);
 
 if (missingVars.length > 0) {
-  throw new Error(`Missing environment variables: ${missingVars.join(', ')}`);
+  throw new Error(`Missing environment variables: ${missingVars.join(", ")}`);
 }
 
-interface Env {
+export interface Config {
   NODE_ENV: string;
   CLIENT_ID: string;
   GUILD_ID: string;
@@ -35,7 +36,7 @@ interface Env {
   DB_NAME: string;
 }
 
-const Config: Env = {
+export const config: Config = {
   NODE_ENV: envVars.NODE_ENV,
   CLIENT_ID: envVars.CLIENT_ID!,
   GUILD_ID: envVars.GUILD_ID!,
@@ -47,5 +48,3 @@ const Config: Env = {
   DB_PORT: envVars.DB_PORT!,
   DB_NAME: envVars.DB_NAME!,
 };
-
-export default Config;

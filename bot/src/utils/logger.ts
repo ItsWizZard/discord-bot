@@ -1,4 +1,5 @@
-import pino, { LogFn, Logger } from 'pino';
+import pino from "pino";
+import type { LogFn, Logger } from "pino";
 
 function logMethod(this: Logger, args: Parameters<LogFn>, method: LogFn) {
   if (args.length === 2) {
@@ -8,10 +9,10 @@ function logMethod(this: Logger, args: Parameters<LogFn>, method: LogFn) {
 }
 
 const logger = pino({
-  level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
+  level: process.env.NODE_ENV === "production" ? "info" : "debug",
   hooks: { logMethod },
   transport: {
-    target: 'pino-pretty',
+    target: "pino-pretty",
     options: {
       colorize: true,
     },

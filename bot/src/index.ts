@@ -1,6 +1,6 @@
-import { Client, GatewayIntentBits } from 'discord.js';
-import Config from './config';
-import { registerEvents } from './handlers/eventRegistry';
+import { Client, GatewayIntentBits } from "discord.js";
+import { config } from "./config/index.js";
+import { loadCommands, registerEvents } from "./loaders/index.js";
 
 const client = new Client({
   intents: [
@@ -12,6 +12,7 @@ const client = new Client({
   ],
 });
 
-registerEvents(client);
+await loadCommands();
+await registerEvents(client);
 
-client.login(Config.DISCORD_TOKEN);
+client.login(config.DISCORD_TOKEN);

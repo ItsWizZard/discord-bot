@@ -1,4 +1,8 @@
 node_modules
 dist
-.idea
+
+*.tsbuildinfo
+
 .env
+.log
+.idea
